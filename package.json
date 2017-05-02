@@ -1,0 +1,52 @@
+{
+  "name": "generator-react-multipage",
+  "version": "0.0.0",
+  "description": "Yeoman generator for react multipage.",
+  "homepage": "https://github.com/afeiship/generator-react-multipage",
+  "author": {
+    "name": "afeiship",
+    "email": "1290657123@qq.com",
+    "url": "https://github.com/afeiship"
+  },
+  "files": [
+    "generators"
+  ],
+  "main": "generators/index.js",
+  "keywords": [
+    "multipage",
+    "yeoman-generator"
+  ],
+  "devDependencies": {
+    "yeoman-test": "^1.6.0",
+    "yeoman-assert": "^3.0.0",
+    "coveralls": "^2.12.0",
+    "nsp": "^2.6.3",
+    "eslint": "^3.18.0",
+    "eslint-config-xo-space": "^0.16.0",
+    "jest": "^19.0.2",
+    "jest-cli": "^19.0.1"
+  },
+  "dependencies": {
+    "yeoman-generator-helper": "github:afeiship/yeoman-generator-helper",
+    "yeoman-generator": "^1.0.0",
+    "chalk": "^1.1.3",
+    "yosay": "^2.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "scripts": {
+    "prepublish": "nsp check",
+    "pretest": "eslint . --fix",
+    "test": "jest"
+  },
+  "eslintConfig": {
+    "extends": "xo-space",
+    "env": {
+      "jest": true,
+      "node": true
+    }
+  },
+  "repository": "git@github.com:afeiship/generator-react-multipage.git",
+  "license": "MIT"
+}
