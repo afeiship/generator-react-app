@@ -18,3 +18,9 @@ yo react-multipage:module
 yo react-multipage:module-multi
 yo react-multipage:service
 ```
+
+## user your own alias:
++ alias in mac/linux
++ https://superuser.com/questions/49170/create-an-alias-in-windows-xp
+
+
