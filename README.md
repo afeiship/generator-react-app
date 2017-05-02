@@ -3,6 +3,7 @@
 
 ## install:
 ```bash
+npm install -g yeoman
 npm install -g afeiship/generator-react-multipage
 ```
 
