@@ -30,7 +30,6 @@ module.exports = class extends Generator {
 
   writing () {
     yoHelper.rewriteProps(this.props);
-    console.log(this.props);
     this._writingJsFile();
     this._writingScssFile();
     this._updateIndexJs();
