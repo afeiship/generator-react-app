@@ -53,8 +53,4 @@ module.exports = class extends Generator {
     );
     fs.writeFileSync(indexJs,fileStr);
   }
-
-  install () {
-    console.log('Use `yarn install`');
-  }
 };
