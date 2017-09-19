@@ -8,6 +8,8 @@ const Generator = require('yeoman-generator');
 
 const MIXIN_END = '/*===mixins end===*/';
 const MIXIN_PATH = './src/components/mixins';
+const nx = require('next-js-core2');
+requre('next-camelize');
 
 module.exports = class extends Generator {
   prompting(){
@@ -48,7 +50,7 @@ module.exports = class extends Generator {
     let fileStr = fs.readFileSync(indexJs,'utf-8');
     fileStr = fileStr.replace(
       MIXIN_END,
-      `export const $${mixinName}=require('./${mixin_name}').default;\r\n${MIXIN_END}`
+      `export const ${nx.camelize('_' + mixinName)}Mixin=require('./${mixin_name}').default;\r\n${MIXIN_END}`
     );
     fs.writeFileSync(indexJs,fileStr);
   }
