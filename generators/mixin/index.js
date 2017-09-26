@@ -50,7 +50,7 @@ module.exports = class extends Generator {
     let fileStr = fs.readFileSync(indexJs,'utf-8');
     fileStr = fileStr.replace(
       MIXIN_END,
-      `export const ${nx.camelize('_' + mixinName)}Mixin=require('./mixins/${mixin_name}').default;\r\n${MIXIN_END}`
+      `export const ${nx.camelize('_' + mixinName)}Mixin=require('mixins/${mixin_name}').default;\r\n${MIXIN_END}`
     );
     fs.writeFileSync(indexJs,fileStr);
   }
