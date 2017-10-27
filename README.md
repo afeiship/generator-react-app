@@ -13,10 +13,11 @@ npm install -g afeiship/generator-react-multipage
 yo react-multipage:[submodule]
 
 ##  support submodules:
-yo react-multipage:component
 yo react-multipage:module
 yo react-multipage:module-multi
+yo react-multipage:component
 yo react-multipage:service
+yo react-multipage:mixin
 ```
 
 ## user your own alias:
