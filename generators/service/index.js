@@ -49,7 +49,7 @@ module.exports = class extends Generator {
     let fileStr = fs.readFileSync(indexJs,'utf-8');
     fileStr = fileStr.replace(
       SERVICE_END,
-      `export const $${serviceName}=require('./${service_name}').default;\r\n${SERVICE_END}`
+      `export const $${serviceName}=require('services/${service_name}').default;\r\n${SERVICE_END}`
     );
     fs.writeFileSync(indexJs,fileStr);
   }
