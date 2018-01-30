@@ -1,5 +1,5 @@
 export default class {
-  static method1(){
+  method1(){
     console.log('Your method!')
   }
 }
