@@ -62,7 +62,7 @@ module.exports = class extends Generator {
     let fileStr = fs.readFileSync(indexJs, 'utf-8');
     fileStr = fileStr.replace(
       MODAL_END,
-      `export const ${nx.camelize('_' + modalName)}Mixin=require('modals/${modal_name}').default;\r\n${MODAL_END}`
+      `export const ${nx.camelize('_' + modalName)}=require('modals/${modal_name}').default;\r\n${MODAL_END}`
     );
     fs.writeFileSync(indexJs, fileStr);
   }
