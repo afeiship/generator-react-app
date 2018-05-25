@@ -38,7 +38,7 @@ module.exports = class extends Generator {
   _writingJsFile () {
     this.fs.copyTpl(
       this.templatePath('template.js'),
-      this.destinationPath(`${COMPONENT_PATH}/scripts/${this.props.component_name}.js`),
+      this.destinationPath(`${COMPONENT_PATH}/views/${this.props.component_name}.js`),
       this.props
     );
   }
@@ -46,14 +46,14 @@ module.exports = class extends Generator {
   _writingScssFile () {
     this.fs.copyTpl(
       this.templatePath('template.scss'),
-      this.destinationPath(`${COMPONENT_PATH}/styles/components/${this.props.component_name}.scss`),
+      this.destinationPath(`${this.ROOT_PATH}/src/assets/styles/components/${this.props.component_name}.scss`),
       this.props
     );
   }
 
   _updateIndexJs(){
     const {component_name,ComponentName} = this.props;
-    const indexJs = `${this.ROOT_PATH}/src/components/scripts/index.js`;
+    const indexJs = `${this.ROOT_PATH}/src/components/index.js`;
     let fileStr = fs.readFileSync(indexJs,'utf-8');
     fileStr = fileStr.replace(
       COMPONENTS_END,

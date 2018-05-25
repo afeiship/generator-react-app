@@ -33,7 +33,6 @@ module.exports = class extends Generator {
   writing () {
     yoHelper.rewriteProps(this.props);
     this._writingJsFile();
-    // this._updateIndexJs();
   }
 
   _writingJsFile () {
@@ -42,16 +41,5 @@ module.exports = class extends Generator {
       this.destinationPath(`${MIXIN_PATH}/${this.props.mixin_name}.js`),
       this.props
     );
-  }
-
-  _updateIndexJs(){
-    const {mixin_name,mixinName} = this.props;
-    const indexJs = `${this.ROOT_PATH}/src/components/scripts/index.js`;
-    let fileStr = fs.readFileSync(indexJs,'utf-8');
-    fileStr = fileStr.replace(
-      MIXIN_END,
-      `export const ${nx.camelize('_' + mixinName)}Mixin=require('mixins/${mixin_name}').default;\r\n${MIXIN_END}`
-    );
-    fs.writeFileSync(indexJs,fileStr);
   }
 };
