@@ -33,7 +33,7 @@ module.exports = class extends Generator {
   writing () {
     yoHelper.rewriteProps(this.props);
     this._writingJsFile();
-    this._updateIndexJs();
+    // this._updateIndexJs();
   }
 
   _writingJsFile () {
