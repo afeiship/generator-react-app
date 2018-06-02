@@ -1,6 +1,6 @@
-import {$app} from 'components/scripts/index';
+import {$app} from 'components';
 
-export default class extends React.PureComponent {
+export default class extends React.Component {
   render(){
     return (
       <section>

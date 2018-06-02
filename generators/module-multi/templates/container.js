@@ -1,4 +1,4 @@
-import AppBase, {$app} from 'components/scripts/index';
+import AppBase, {$app} from 'components';
 
 export default class extends React.PureComponent {
 

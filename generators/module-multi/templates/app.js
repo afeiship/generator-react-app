@@ -1,5 +1,5 @@
 import {Router, Route, IndexRedirect, hashHistory} from 'react-router';
-import AppBase from 'components/scripts/index';
+import AppBase from 'components';
 
 
 import Container from './container';

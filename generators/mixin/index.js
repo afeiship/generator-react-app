@@ -12,7 +12,7 @@ const nx = require('next-js-core2');
 require('next-camelize');
 
 module.exports = class extends Generator {
-  prompting(){
+  prompting() {
     // Have Yeoman greet the user.
     this.log(yosay(
       'Welcome to the striking ' + chalk.red('generator-fei-nodejs') + ' generator!'
@@ -25,21 +25,33 @@ module.exports = class extends Generator {
     }];
 
     this.ROOT_PATH = process.cwd();
-    return this.prompt(prompts).then( (props) => {
+    return this.prompt(prompts).then((props) => {
       this.props = props;
     });
   }
 
-  writing () {
+  writing() {
     yoHelper.rewriteProps(this.props);
     this._writingJsFile();
+    this._updateIndexJs();
   }
 
-  _writingJsFile () {
+  _writingJsFile() {
     this.fs.copyTpl(
       this.templatePath('template.js'),
       this.destinationPath(`${MIXIN_PATH}/${this.props.mixin_name}.js`),
       this.props
     );
+  }
+
+  _updateIndexJs() {
+    const { mixin_name, mixinName } = this.props;
+    const indexJs = `${this.ROOT_PATH}/src/components/scripts/index.js`;
+    let fileStr = fs.readFileSync(indexJs, 'utf-8');
+    fileStr = fileStr.replace(
+      MIXIN_END,
+      `export const ${nx.camelize('_' + mixinName)}Mixin=require('mixins/${mixin_name}').default;\r\n${MIXIN_END}`
+    );
+    fs.writeFileSync(indexJs, fileStr);
   }
 };
