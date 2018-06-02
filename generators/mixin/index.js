@@ -46,7 +46,7 @@ module.exports = class extends Generator {
 
   _updateIndexJs() {
     const { mixin_name, mixinName } = this.props;
-    const indexJs = `${this.ROOT_PATH}/src/components/scripts/index.js`;
+    const indexJs = `${this.ROOT_PATH}/src/components/views/index.js`;
     let fileStr = fs.readFileSync(indexJs, 'utf-8');
     fileStr = fileStr.replace(
       MIXIN_END,
