@@ -57,7 +57,7 @@ module.exports = class extends Generator {
     let fileStr = fs.readFileSync(indexJs,'utf-8');
     fileStr = fileStr.replace(
       COMPONENTS_END,
-      `export const ${ComponentName}=require('views/${component_name}').default;\r\n${COMPONENTS_END}`
+      `export const ${ComponentName} = require('views/${component_name}').default;\r\n${COMPONENTS_END}`
     );
     fs.writeFileSync(indexJs,fileStr);
   }
