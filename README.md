@@ -9,7 +9,7 @@ cd generator-react-app
 npm link
 ```
 
-## usage:
+## usage
 + component/module/module-multi/service:
 ```bash
 yo react-app:[submodule]
@@ -22,8 +22,10 @@ yo react-app:service
 yo react-app:mixin
 ```
 
-## user your own alias:
+## user your own alias
 + alias in mac/linux
 + https://superuser.com/questions/49170/create-an-alias-in-windows-xp
 
-
+## todo
+- [ ] Add boilerplate project
+- [ ] Add .yo-rc.json file for preference
