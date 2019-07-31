@@ -1,8 +1,8 @@
 {
-  "name": "generator-react-multipage",
+  "name": "generator-react-app",
   "version": "0.0.0",
   "description": "Yeoman generator for react multipage.",
-  "homepage": "https://github.com/afeiship/generator-react-multipage",
+  "homepage": "https://github.com/afeiship/generator-react-app",
   "author": {
     "name": "afeiship",
     "email": "1290657123@qq.com",
@@ -48,6 +48,6 @@
       "node": true
     }
   },
-  "repository": "git@github.com:afeiship/generator-react-multipage.git",
+  "repository": "git@github.com:afeiship/generator-react-app.git",
   "license": "MIT"
 }

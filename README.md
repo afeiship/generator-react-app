@@ -1,23 +1,23 @@
-# generator-react-multipage 
-> Yeoman generator for react multipage.
+# generator-react-app 
+> Yeoman generator for react app.
 
 ## install:
 ```bash
 npm install -g yeoman
-npm install -g afeiship/generator-react-multipage
+npm install -g afeiship/generator-react-app
 ```
 
 ## usage:
 + component/module/module-multi/service:
 ```bash
-yo react-multipage:[submodule]
+yo react-app:[submodule]
 
 ##  support submodules:
-yo react-multipage:module
-yo react-multipage:module-multi
-yo react-multipage:component
-yo react-multipage:service
-yo react-multipage:mixin
+yo react-app:module
+yo react-app:module-multi
+yo react-app:component
+yo react-app:service
+yo react-app:mixin
 ```
 
 ## user your own alias:
