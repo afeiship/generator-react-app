@@ -1,10 +1,12 @@
-# generator-react-app 
+# generator-react-app
 > Yeoman generator for react app.
 
-## install:
+## installation
 ```bash
 npm install -g yeoman
-npm install -g afeiship/generator-react-app
+git clone git@github.com:afeiship/generator-react-app.git
+cd generator-react-app
+npm link
 ```
 
 ## usage:
