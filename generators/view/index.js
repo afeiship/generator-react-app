@@ -1,5 +1,6 @@
 'use strict';
 const chalk = require('chalk');
+const figlet = require('figlet');
 const fs = require('fs');
 const { resolve } = require('path');
 const yosay = require('yosay');
@@ -10,10 +11,21 @@ const remote = require('yeoman-remote');
 const replaceInFile = require('replace-in-file');
 const glob = require('glob');
 
+
 module.exports = class extends Generator {
   constructor(args, options) {
     super(args, options);
     this._config = this.config.getAll();
+
+    // Show Hello message:
+    console.log(
+      chalk.green(
+        figlet.textSync('view', {
+          horizontalLayout: 'default',
+          verticalLayout: 'default'
+        })
+      )
+    );
   }
 
   prompting() {

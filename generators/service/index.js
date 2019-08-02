@@ -1,56 +1,70 @@
 'use strict';
 const chalk = require('chalk');
+const figlet = require('figlet');
 const fs = require('fs');
-const path = require('path');
+const { resolve } = require('path');
 const yosay = require('yosay');
+const nx = require('next-js-core2');
 const yoHelper = require('yeoman-generator-helper');
 const Generator = require('yeoman-generator');
-
-const SERVICE_END = '/*===services end===*/';
-const SERVICE_PATH = './src/components/services';
+const remote = require('yeoman-remote');
+const replaceInFile = require('replace-in-file');
+const glob = require('glob');
 
 module.exports = class extends Generator {
-  prompting(){
+  constructor(args, options) {
+    super(args, options);
+    this._config = this.config.getAll();
+
+    // Show Hello message:
+    console.log(
+      chalk.green(
+        figlet.textSync('service', {
+          horizontalLayout: 'default',
+          verticalLayout: 'default'
+        })
+      )
+    );
+  }
+
+  prompting() {
+    const directory = nx.get(this._config, 'dirs.services');
     // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the striking ' + chalk.red('generator-fei-nodejs') + ' generator!'
-    ));
+    this.option('dir', {
+      type: String,
+      alias: 'd',
+      description: 'Your service base dir',
+      default: directory || './src/components/services'
+    });
 
-    const prompts = [{
-      type: 'input',
-      name: 'service_name',
-      message: 'Your service_name?'
-    }];
+    const prompts = [
+      {
+        type: 'input',
+        name: 'service_name',
+        message: 'Your service_name?'
+      }
+    ];
 
-    this.ROOT_PATH = process.cwd();
-    return this.prompt(prompts).then( (props) => {
+    return this.prompt(prompts).then((props) => {
       this.props = props;
     });
   }
 
-  writing () {
-    yoHelper.rewriteProps(this.props);
-    console.log(this.props);
-    this._writingJsFile();
-    this._updateIndexJs();
-  }
-
-  _writingJsFile () {
-    this.fs.copyTpl(
-      this.templatePath('template.js'),
-      this.destinationPath(`${SERVICE_PATH}/${this.props.service_name}.js`),
-      this.props
+  writing() {
+    const done = this.async();
+    remote(
+      'afeiship',
+      'boilerplate-react-app',
+      function(err, cachePath) {
+        // copy files:
+        const dest = resolve(this.options.dir);
+        yoHelper.rename(this, 'index', this.props.service_name);
+        this.fs.copy(
+          glob.sync(resolve(cachePath, 'src/service/index.js')),
+          this.destinationPath(resolve(dest))
+        );
+        done();
+      }.bind(this)
     );
-  }
-
-  _updateIndexJs(){
-    const {service_name,serviceName} = this.props;
-    const indexJs = `${this.ROOT_PATH}/src/components/index.js`;
-    let fileStr = fs.readFileSync(indexJs,'utf-8');
-    fileStr = fileStr.replace(
-      SERVICE_END,
-      `export const $${serviceName}=require('services/${service_name}').default;\r\n${SERVICE_END}`
-    );
-    fs.writeFileSync(indexJs,fileStr);
   }
 };
