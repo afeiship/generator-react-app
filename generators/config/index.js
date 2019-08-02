@@ -19,17 +19,13 @@ module.exports = class extends Generator {
 
   prompting() {
     // Show Hello message:
-    console.log(
-      chalk.green(
-        figlet.textSync('config', {
-          horizontalLayout: 'default',
-          verticalLayout: 'default'
-        })
+    this.log(
+      yosay(
+        'Welcome to the striking ' +
+          chalk.red('generator-yo.rc.json') +
+          ' file!'
       )
     );
-    return this.prompt(prompts).then((props) => {
-      this.props = props;
-    });
   }
 
   writing() {
