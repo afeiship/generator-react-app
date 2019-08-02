@@ -7,6 +7,7 @@ const nx = require('next-js-core2');
 const yoHelper = require('yeoman-generator-helper');
 const Generator = require('yeoman-generator');
 const remote = require('yeoman-remote');
+const replaceInFile = require('replace-in-file');
 const glob = require('glob');
 
 module.exports = class extends Generator {
@@ -59,7 +60,7 @@ module.exports = class extends Generator {
     const { component_name } = this.props;
     const files = glob.sync(resolve(this.destinationPath(), '{**,.*}'));
 
-    replace.sync({
+    replaceInFile.sync({
       files,
       from: [/component-name/g],
       to: [component_name]
