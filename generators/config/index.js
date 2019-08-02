@@ -22,7 +22,7 @@ module.exports = class extends Generator {
     this.log(
       yosay(
         'Welcome to the striking ' +
-          chalk.red('generator-yo.rc.json') +
+          chalk.red('generator .yo-rc.json') +
           ' file!'
       )
     );
