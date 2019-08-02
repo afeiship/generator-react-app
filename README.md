@@ -12,12 +12,7 @@ npm link
 ## usage
 + component/module/module-multi/service:
 ```bash
-yo react-app:[submodule]
-
-##  support submodules:
-yo react-app:module
-yo react-app:module-multi
-yo react-app:component
+yo react-app:view
 yo react-app:service
 yo react-app:mixin
 ```
@@ -27,5 +22,5 @@ yo react-app:mixin
 + https://superuser.com/questions/49170/create-an-alias-in-windows-xp
 
 ## todo
-- [ ] Add boilerplate project
-- [ ] Add .yo-rc.json file for preference
+- [x] Add boilerplate project
+- [x] Add .yo-rc.json file for preference
