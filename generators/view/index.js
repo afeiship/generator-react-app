@@ -22,7 +22,7 @@ module.exports = class extends Generator {
       type: String,
       alias: 'd',
       description: 'Your component base dir',
-      default: viewsDir || './src/components'
+      default: viewsDir || './src/components/views'
     });
 
     const prompts = [
@@ -53,5 +53,16 @@ module.exports = class extends Generator {
         done();
       }.bind(this)
     );
+  }
+
+  end() {
+    const { component_name } = this.props;
+    const files = glob.sync(resolve(this.destinationPath(), '{**,.*}'));
+
+    replace.sync({
+      files,
+      from: [/component-name/g],
+      to: [component_name]
+    });
   }
 };
