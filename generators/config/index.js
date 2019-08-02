@@ -39,10 +39,9 @@ module.exports = class extends Generator {
       'boilerplate-react-app',
       function(err, cachePath) {
         // copy files:
-        const dest = resolve(this.options.dir);
         this.fs.copy(
-          glob.sync(resolve(cachePath, 'src/configs/.yo-rc.json')),
-          this.destinationPath(resolve(dest))
+          glob.sync(resolve(cachePath, 'src/config/.yo-rc.json')),
+          this.destinationPath()
         );
         done();
       }.bind(this)
