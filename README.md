@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/afeiship/generator-react-app">
-    <img width="800" src="http://ww2.sinaimg.cn/large/006tNc79gy1g5lpgrfbl9j30va0u0gqt.jpg">
+    <img width="880" src="http://ww1.sinaimg.cn/large/006tNc79gy1g5m6bc3z0uj31rb0egwm1.jpg">
   </a>
 </p>
 
