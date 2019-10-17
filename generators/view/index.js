@@ -60,12 +60,16 @@ module.exports = class extends Generator {
 
   writing() {
     const done = this.async();
+    const prefix = this.options.prefix;
     remote(
       'afeiship',
       'boilerplate-react-app',
       function(err, cachePath) {
         // copy files:
-        const dest = resolve(this.options.dir, this.props.component_name);
+        const dest = resolve(
+          this.options.dir,
+          prefix + this.props.component_name
+        );
         this.fs.copy(
           glob.sync(resolve(cachePath, 'src/view/*')),
           this.destinationPath(dest)
