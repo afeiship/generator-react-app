@@ -69,7 +69,7 @@ module.exports = class extends Generator {
 
   end() {
     const { component_name } = this.props;
-    const viewsDir = nx.get(this._config, 'dirs.views');
+    const viewsDir = this.options.dir;
     const files = glob.sync(join(this.destinationPath(), viewsDir, '{**,.*}'));
     replaceInFile.sync({
       files,
