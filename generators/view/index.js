@@ -29,12 +29,20 @@ module.exports = class extends Generator {
 
   prompting() {
     const viewsDir = nx.get(this._config, 'dirs.views');
+    const prefix = nx.get(this._config, 'prefix');
     // Have Yeoman greet the user.
     this.option('dir', {
       type: String,
       alias: 'd',
       description: 'Your component base dir',
       default: viewsDir || './src/components/views'
+    });
+
+    this.option('prefix', {
+      type: String,
+      alias: 'p',
+      description: 'Your component prefix',
+      default: prefix || ''
     });
 
     const prompts = [
@@ -70,11 +78,12 @@ module.exports = class extends Generator {
   end() {
     const { component_name } = this.props;
     const viewsDir = this.options.dir;
+    const prefix = this.options.prefix;
     const files = glob.sync(join(this.destinationPath(), viewsDir, '{**,.*}'));
     replaceInFile.sync({
       files,
       from: [/component-name/g],
-      to: [component_name]
+      to: [prefix + component_name]
     });
   }
 };
