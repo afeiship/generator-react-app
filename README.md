@@ -10,9 +10,7 @@
 ## installation
 ```bash
 npm install -g yeoman
-git clone git@github.com:afeiship/generator-react-app.git
-cd generator-react-app
-npm link
+npm install @feizheng/generator-react-app
 ```
 
 ## usage
