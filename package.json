@@ -8,10 +8,16 @@
     "email": "1290657123@qq.com",
     "url": "https://github.com/afeiship"
   },
-  "files": ["generators"],
+  "files": [
+    "generators"
+  ],
   "main": "generators/index.js",
-  "keywords": ["multipage", "yeoman-generator"],
+  "keywords": [
+    "multipage",
+    "yeoman-generator"
+  ],
   "devDependencies": {
+    "@feizheng/rake-git": "^1.2.0",
     "coveralls": "^2.12.0",
     "eslint": "^6.1.0",
     "eslint-config-xo-space": "^0.16.0",
