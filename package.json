@@ -1,5 +1,5 @@
 {
-  "name": "generator-react-app",
+  "name": "@feizheng/generator-react-app",
   "version": "1.0.0",
   "description": "Yeoman generator for react app.",
   "homepage": "https://github.com/afeiship/generator-react-app",
@@ -8,33 +8,27 @@
     "email": "1290657123@qq.com",
     "url": "https://github.com/afeiship"
   },
-  "files": [
-    "generators"
-  ],
+  "files": ["generators"],
   "main": "generators/index.js",
-  "keywords": [
-    "multipage",
-    "yeoman-generator"
-  ],
+  "keywords": ["multipage", "yeoman-generator"],
   "devDependencies": {
     "coveralls": "^2.12.0",
     "eslint": "^6.1.0",
     "eslint-config-xo-space": "^0.16.0",
     "jest": "^19.0.2",
     "jest-cli": "^19.0.1",
-    "next-camelize": "github:afeiship/next-camelize",
     "nsp": "^2.6.3",
     "prettier": "^1.18.2",
     "yeoman-assert": "^3.0.0",
     "yeoman-test": "^1.6.0"
   },
   "dependencies": {
+    "@feizheng/next-js-core2": "^2.0.2",
+    "@feizheng/yeoman-generator-helper": "^1.0.0",
     "chalk": "^1.1.3",
     "figlet": "^1.2.3",
-    "next-js-core2": "github:afeiship/next-js-core2",
     "replace-in-file": "^4.1.1",
     "yeoman-generator": "^1.0.0",
-    "yeoman-generator-helper": "github:afeiship/yeoman-generator-helper",
     "yeoman-remote": "^1.0.1",
     "yosay": "^2.0.0"
   },
