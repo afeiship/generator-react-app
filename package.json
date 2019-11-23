@@ -38,21 +38,6 @@
     "yeoman-remote": "^1.0.1",
     "yosay": "^2.0.0"
   },
-  "jest": {
-    "testEnvironment": "node"
-  },
-  "scripts": {
-    "prepublish": "nsp check",
-    "pretest": "eslint . --fix",
-    "test": "jest"
-  },
-  "eslintConfig": {
-    "extends": "xo-space",
-    "env": {
-      "jest": true,
-      "node": true
-    }
-  },
   "repository": "git@github.com:afeiship/generator-react-app.git",
   "license": "MIT",
   "publishConfig": {
