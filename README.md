@@ -10,7 +10,7 @@
 ## installation
 ```bash
 npm install -g yeoman
-npm install @feizheng/generator-react-app
+npm install -g @feizheng/generator-react-app
 ```
 
 ## usage
