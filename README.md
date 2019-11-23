@@ -16,9 +16,9 @@ npm install -g @feizheng/generator-react-app
 ## usage
 + component/module/module-multi/service:
 ```bash
-yo react-app:view
-yo react-app:service
-yo react-app:mixin
+yo @feizheng/react-app:view
+yo @feizheng/react-app:service
+yo @feizheng/react-app:mixin
 ```
 
 ## user your own alias
