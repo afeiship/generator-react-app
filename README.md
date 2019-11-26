@@ -8,14 +8,22 @@
 > Yeoman generator for react app.
 
 ## installation
-```bash
+```shell
 npm install -g yeoman
 npm install -g @feizheng/generator-react-app
 ```
 
+## install manual
+```shell
+git clone https://github.com/afeiship/generator-react-app.git
+cd generator-react-app
+npm install
+npm link
+```
+
 ## usage
 + component/module/module-multi/service:
-```bash
+```shell
 yo @feizheng/react-app:view
 yo @feizheng/react-app:service
 yo @feizheng/react-app:mixin
