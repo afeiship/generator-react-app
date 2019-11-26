@@ -13,7 +13,7 @@ npm install -g yeoman
 npm install -g @feizheng/generator-react-app
 ```
 
-## install manual
+## install from github
 ```shell
 git clone https://github.com/afeiship/generator-react-app.git
 cd generator-react-app
