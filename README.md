@@ -1,16 +1,9 @@
-<p align="center">
-  <a href="https://github.com/afeiship/generator-react-app">
-    <img width="880" src="http://ww3.sinaimg.cn/large/006tNc79gy1g5m6d2dfwvj31rb0egwmb.jpg">
-  </a>
-</p>
-
 # generator-react-app
 > Yeoman generator for react app.
 
 ## installation
 ```shell
 npm install -g yeoman
-npm install -g @feizheng/generator-react-app
 ```
 
 ## install from github
@@ -22,7 +15,6 @@ npm link
 ```
 
 ## usage
-+ component/module/module-multi/service:
 ```shell
 yo @feizheng/react-app:view
 yo @feizheng/react-app:service
