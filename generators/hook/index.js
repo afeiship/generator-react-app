@@ -34,13 +34,7 @@ module.exports = class extends Generator {
   }
 
   prompting() {
-    const {
-      components_dir,
-      component_type,
-      export_type,
-      file_type,
-      prefix
-    } = this._config.component;
+    const { components_dir, export_type, file_type, prefix } = this._config.component;
 
     this.option('components_dir', {
       type: String,
@@ -52,12 +46,6 @@ module.exports = class extends Generator {
       type: String,
       description: 'Your component prefix',
       default: prefix
-    });
-
-    this.option('component_type', {
-      type: String,
-      description: 'Your component_type(classify/functional)?',
-      default: component_type || 'functional.'
     });
 
     this.option('export_type', {
@@ -86,7 +74,7 @@ module.exports = class extends Generator {
     ];
 
     return this.prompt(prompts).then((props) => {
-      const { prefix } = this._config.component;
+      const { prefix } = this._config.hook;
       const hook_name = nx.join([prefix, props.hook_name], '');
       this.props = { ...props, ...this.defaults, hook_name };
       yoHelper.rewriteProps(this.props, {
@@ -98,14 +86,14 @@ module.exports = class extends Generator {
   writing() {
     const done = this.async();
     const { hook_name } = this.props;
-    const { component_type, export_type, file_type } = this._config.component;
+    const { components_dir, export_type, file_type } = this._config.hook;
     remote('afeiship', 'boilerplate-react-app', async (_, cachePath) => {
-      const dest = resolve(this.options.components_dir);
-      const filename = `${component_type}.${export_type}.${file_type}`;
+      const dest = resolve(components_dir);
+      const filename = `${export_type}.${file_type}`;
       const dstFilename = `${hook_name}/index.${file_type}`;
 
       this.fs.copyTpl(
-        glob.sync(resolve(cachePath, `src/component/${file_type}`, filename)),
+        glob.sync(resolve(cachePath, `src/hook/${file_type}`, filename)),
         this.destinationPath(resolve(dest)),
         this.props
       );
@@ -114,6 +102,7 @@ module.exports = class extends Generator {
         resolve(this.destinationPath(dest), filename),
         resolve(this.destinationPath(dest), dstFilename)
       );
+
       done();
     });
   }

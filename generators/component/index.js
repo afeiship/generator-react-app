@@ -98,9 +98,9 @@ module.exports = class extends Generator {
   writing() {
     const done = this.async();
     const { component_name } = this.props;
-    const { component_type, export_type, file_type } = this._config.component;
+    const { components_dir, component_type, export_type, file_type } = this._config.component;
     remote('afeiship', 'boilerplate-react-app', async (_, cachePath) => {
-      const dest = resolve(this.options.components_dir);
+      const dest = resolve(components_dir);
       const filename = `${component_type}.${export_type}.${file_type}`;
       const dstFilename = `${component_name}/index.${file_type}`;
 
