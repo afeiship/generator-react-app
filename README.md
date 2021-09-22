@@ -16,9 +16,7 @@ npm link
 
 ## usage
 ```shell
-yo @jswork/react-app:view
-yo @jswork/react-app:service
-yo @jswork/react-app:mixin
+yo @jswork/react-app:config
 yo @jswork/react-app:component
 ```
 
