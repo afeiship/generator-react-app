@@ -18,6 +18,7 @@ npm link
 ```shell
 yo @jswork/react-app:config
 yo @jswork/react-app:component
+yo @jswork/react-app:hook
 ```
 
 ## user your own alias
