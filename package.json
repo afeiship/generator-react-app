@@ -29,6 +29,8 @@
   },
   "dependencies": {
     "@jswork/next": "^1.0.9",
+    "@jswork/next-date": "^1.0.11",
+    "@jswork/next-join": "^1.0.0",
     "@jswork/yeoman-generator-helper": "^1.0.3",
     "chalk": "^1.1.3",
     "figlet": "^1.2.3",
