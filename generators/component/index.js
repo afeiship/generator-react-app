@@ -51,7 +51,7 @@ module.exports = class extends Generator {
     this.option('prefix', {
       type: String,
       description: 'Your component prefix',
-      default: prefix
+      default: prefix || ''
     });
 
     this.option('component_type', {
