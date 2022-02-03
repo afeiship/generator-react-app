@@ -18,11 +18,12 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    const done = this.async();
-    remote('afeiship', 'boilerplate-react-app', (_, cachePath) => {
-      // copy files:
-      this.fs.copy(glob.sync(resolve(cachePath, 'src/config/.yo-rc.json')), this.destinationPath());
-      done();
-    });
+    // const done = this.async();
+    console.log('writing.');
+    // remote('afeiship', 'boilerplate-react-app', (_, cachePath) => {
+    //   // copy files:
+    //   this.fs.copy(glob.sync(resolve(cachePath, 'src/config/.yo-rc.json')), this.destinationPath());
+    //   done();
+    // });
   }
 };
