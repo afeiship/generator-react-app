@@ -1,10 +1,8 @@
 'use strict';
 const chalk = require('chalk');
-const { resolve } = require('path');
 const yosay = require('yosay');
 const Generator = require('yeoman-generator');
-const remote = require('yeoman-remote');
-const glob = require('glob');
+const globby = require('globby');
 
 module.exports = class extends Generator {
   constructor(args, options) {
@@ -13,17 +11,12 @@ module.exports = class extends Generator {
   }
 
   prompting() {
-    // Show Hello message:
     this.log(yosay('Welcome to the striking ' + chalk.red('generator .yo-rc.json') + ' file!'));
   }
 
   writing() {
-    // const done = this.async();
-    console.log('writing.');
-    // remote('afeiship', 'boilerplate-react-app', (_, cachePath) => {
-    //   // copy files:
-    //   this.fs.copy(glob.sync(resolve(cachePath, 'src/config/.yo-rc.json')), this.destinationPath());
-    //   done();
-    // });
+    const srcFiles = globby.sync(this.templatePath('**'), { dot: true });
+    const dstPath = this.destinationPath();
+    this.fs.copy(srcFiles, dstPath);
   }
 };
