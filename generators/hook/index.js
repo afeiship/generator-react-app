@@ -9,7 +9,6 @@ const remote = require('yeoman-remote');
 const glob = require('glob');
 
 require('@jswork/next-date');
-require('@jswork/next-join');
 
 module.exports = class extends Generator {
   get defaults() {
@@ -75,7 +74,7 @@ module.exports = class extends Generator {
 
     return this.prompt(prompts).then((props) => {
       const { prefix } = this._config.hook;
-      const hook_name = nx.join([prefix, props.hook_name], '');
+      const hook_name = [prefix, props.hook_name].filter(Boolean).join('');
       this.props = { ...props, ...this.defaults, hook_name };
       yoHelper.rewriteProps(this.props, {
         exclude: ['description', 'author', 'email', 'created_at']
