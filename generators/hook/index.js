@@ -80,7 +80,7 @@ module.exports = class extends Generator {
     const dstFilename = `${hook_name}/index.${file_type}`;
 
     this.fs.copyTpl(
-      glob.sync(resolve(srcPath, `src/hook/${file_type}`, filename)),
+      glob.sync(resolve(srcPath, file_type, filename)),
       this.destinationPath(resolve(dest)),
       this.props
     );
