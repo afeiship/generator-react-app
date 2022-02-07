@@ -5,7 +5,6 @@ const { resolve } = require('path');
 const nx = require('@jswork/next');
 const yoHelper = require('@jswork/yeoman-generator-helper');
 const Generator = require('yeoman-generator');
-const remote = require('yeoman-remote');
 const glob = require('glob');
 
 require('@jswork/next-date');
@@ -96,25 +95,22 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    const done = this.async();
     const { component_name } = this.props;
     const { components_dir, component_type, export_type, file_type } = this._config.component;
-    remote('afeiship', 'boilerplate-react-app', async (_, cachePath) => {
-      const dest = resolve(components_dir);
-      const filename = `${component_type}.${export_type}.${file_type}`;
-      const dstFilename = `${component_name}/index.${file_type}`;
+    const tmplPath = this.templatePath();
+    const dest = resolve(components_dir);
+    const filename = `${component_type}.${export_type}.${file_type}`;
+    const dstFilename = `${component_name}/index.${file_type}`;
 
-      this.fs.copyTpl(
-        glob.sync(resolve(cachePath, `src/component/${file_type}`, filename)),
-        this.destinationPath(resolve(dest)),
-        this.props
-      );
+    this.fs.copyTpl(
+      glob.sync(resolve(tmplPath, file_type, filename)),
+      this.destinationPath(resolve(dest)),
+      this.props
+    );
 
-      this.fs.move(
-        resolve(this.destinationPath(dest), filename),
-        resolve(this.destinationPath(dest), dstFilename)
-      );
-      done();
-    });
+    this.fs.move(
+      resolve(this.destinationPath(dest), filename),
+      resolve(this.destinationPath(dest), dstFilename)
+    );
   }
 };
