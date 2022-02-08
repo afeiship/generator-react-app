@@ -8,7 +8,6 @@ const Generator = require('yeoman-generator');
 const glob = require('glob');
 
 require('@jswork/next-date');
-require('@jswork/next-join');
 
 module.exports = class extends Generator {
   get defaults() {
@@ -86,7 +85,7 @@ module.exports = class extends Generator {
 
     return this.prompt(prompts).then((props) => {
       const { prefix } = this._config.component;
-      const component_name = nx.join([prefix, props.component_name], '');
+      const component_name = [prefix, props.component_name].filter(Boolean).join('');
       this.props = { ...props, ...this.defaults, component_name };
       yoHelper.rewriteProps(this.props, {
         exclude: ['description', 'author', 'email', 'created_at']
