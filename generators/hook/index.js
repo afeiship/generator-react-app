@@ -21,7 +21,6 @@ module.exports = class extends Generator {
 
   constructor(args, options) {
     super(args, options);
-    this._config = this.config.getAll();
     console.log(
       chalk.green(
         figlet.textSync('hook', {
@@ -33,8 +32,7 @@ module.exports = class extends Generator {
   }
 
   prompting() {
-    const { components_dir, export_type, file_type, prefix } = this._config.component;
-
+    const { components_dir, export_type, file_type, prefix } = this.config.get('component');
     this.option('components_dir', {
       type: String,
       description: 'Your base dir?',
@@ -61,7 +59,7 @@ module.exports = class extends Generator {
 
     const prompts = genp(['hook_name', 'description']);
     return this.prompt(prompts).then((props) => {
-      const { prefix } = this._config.hook;
+      const { prefix } = this.config.get('hook');
 
       const hook_name = [prefix, props.hook_name].filter(Boolean).join('');
       this.props = { ...props, ...this.defaults, hook_name };
@@ -73,14 +71,14 @@ module.exports = class extends Generator {
 
   writing() {
     const { hook_name } = this.props;
-    const { components_dir, export_type, file_type } = this._config.hook;
-    const srcPath = this.templatePath();
+    const { components_dir, export_type, file_type } = this.config.get('hook');
+    const tmplPath = this.templatePath();
     const dest = resolve(components_dir);
     const filename = `${export_type}.${file_type}`;
     const dstFilename = `${hook_name}/index.${file_type}`;
 
     this.fs.copyTpl(
-      glob.sync(resolve(srcPath, file_type, filename)),
+      glob.sync(resolve(tmplPath, file_type, filename)),
       this.destinationPath(resolve(dest)),
       this.props
     );

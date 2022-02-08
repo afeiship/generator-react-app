@@ -6,6 +6,7 @@ const nx = require('@jswork/next');
 const yoHelper = require('@jswork/yeoman-generator-helper');
 const Generator = require('yeoman-generator');
 const glob = require('glob');
+const genp = require('@jswork/generator-prompts');
 
 require('@jswork/next-date');
 
@@ -20,7 +21,6 @@ module.exports = class extends Generator {
 
   constructor(args, options) {
     super(args, options);
-    this._config = this.config.getAll();
     console.log(
       chalk.green(
         figlet.textSync('component', {
@@ -32,13 +32,9 @@ module.exports = class extends Generator {
   }
 
   prompting() {
-    const {
-      components_dir,
-      component_type,
-      export_type,
-      file_type,
-      prefix
-    } = this._config.component;
+    const { components_dir, component_type, export_type, file_type, prefix } = this.config.get(
+      'component'
+    );
 
     this.option('components_dir', {
       type: String,
@@ -55,36 +51,25 @@ module.exports = class extends Generator {
     this.option('component_type', {
       type: String,
       description: 'Your component_type(classify/functional)?',
-      default: component_type || 'functional.'
+      default: component_type || 'functional'
     });
 
     this.option('export_type', {
       type: String,
       description: 'Your exports type(const/default)?',
-      default: export_type || 'const.'
+      default: export_type || 'const'
     });
 
     this.option('file_type', {
       type: String,
       description: 'Your file type(tsx/jsx/ts/js)?',
-      default: file_type || 'tsx.'
+      default: file_type || 'tsx'
     });
 
-    const prompts = [
-      {
-        type: 'input',
-        name: 'component_name',
-        message: 'Your component_name(ng-button)?'
-      },
-      {
-        type: 'input',
-        name: 'description',
-        message: 'Your description?'
-      }
-    ];
+    const prompts = genp(['component_name', 'description']);
 
     return this.prompt(prompts).then((props) => {
-      const { prefix } = this._config.component;
+      const { prefix } = this.config.get('component');
       const component_name = [prefix, props.component_name].filter(Boolean).join('');
       this.props = { ...props, ...this.defaults, component_name };
       yoHelper.rewriteProps(this.props, {
@@ -95,7 +80,7 @@ module.exports = class extends Generator {
 
   writing() {
     const { component_name } = this.props;
-    const { components_dir, component_type, export_type, file_type } = this._config.component;
+    const { components_dir, component_type, export_type, file_type } = this.config.get('component');
     const tmplPath = this.templatePath();
     const dest = resolve(components_dir);
     const filename = `${component_type}.${export_type}.${file_type}`;
