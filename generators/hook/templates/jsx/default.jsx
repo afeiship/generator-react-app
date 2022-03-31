@@ -1,6 +1,5 @@
 /**
- * @description
- * <%= description %>
+ * @description <%= description %>
  * @author <%= author %>
  * @email <%= email %>
  * @created_at <%= created_at %>
