@@ -1,0 +1,11 @@
+name: <%= project_name %>
+css:
+  path: src/assets/libs/css
+  entry: ./src/assets/styles/index.scss
+
+js:
+  path: src/assets/libs/js
+  entry:
+    vendors:
+      - react
+      - react-dom
