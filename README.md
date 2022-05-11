@@ -3,15 +3,9 @@
 
 ## installation
 ```shell
-npm install -g yeoman
-```
-
-## install from github
-```shell
 git clone https://github.com/afeiship/generator-react-app.git
 cd generator-react-app
-npm install
-npm link
+npm install && npm link
 ```
 
 ## usage

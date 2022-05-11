@@ -9,6 +9,6 @@ interface Props {
   value?: string;
 }
 
-export const <%=ComponentName%> = (props: Props) => {
+export const <%- ctx.classify(component_name) %> = (props: Props) => {
   return <div>{props.value}</div>
 }

@@ -5,6 +5,6 @@
  * @created_at <%= created_at %>
  */
 
-export const <%=ComponentName%> = (props) => {
+export const <%- ctx.classify(component_name) %> = (props) => {
   return <div>{props.value}</div>
 }

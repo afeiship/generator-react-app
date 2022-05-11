@@ -5,7 +5,7 @@
  * @created_at <%= created_at %>
  */
 
-export class <%= ComponentName %> extends React.Component {
+export class <%- ctx.classify(component_name) %> extends React.Component {
   render(){
     return <div>Hello</div>
   }

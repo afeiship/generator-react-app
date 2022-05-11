@@ -19,6 +19,14 @@ module.exports = class extends Generator {
     };
   }
 
+  get iopts() {
+    return this.config.get('hook');
+  }
+
+  get cmpOts() {
+    return this.config.get('component');
+  }
+
   constructor(args, options) {
     super(args, options);
     console.log(
@@ -32,7 +40,7 @@ module.exports = class extends Generator {
   }
 
   prompting() {
-    const { components_dir, export_type, file_type, prefix } = this.config.get('component');
+    const { components_dir, export_type, file_type, prefix } = this.cmpOts;
     this.option('components_dir', {
       type: String,
       description: 'Your base dir?',
@@ -71,7 +79,7 @@ module.exports = class extends Generator {
 
   writing() {
     const { hook_name } = this.props;
-    const { components_dir, export_type, file_type } = this.config.get('hook');
+    const { components_dir, export_type, file_type } = this.iopts;
     const tmplPath = this.templatePath();
     const dest = resolve(components_dir);
     const filename = `${export_type}.${file_type}`;

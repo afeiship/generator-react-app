@@ -9,7 +9,7 @@ interface Props {
   value?: string;
 };
 
-export class <%= ComponentName %> extends React.Component<Props> {
+export class <%- ctx.classify(component_name) %> extends React.Component<Props> {
   render(){
     return <div>Hello</div>
   }

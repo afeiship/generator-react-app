@@ -5,7 +5,7 @@ const { resolve } = require('path');
 const nx = require('@jswork/next');
 const yoHelper = require('@jswork/yeoman-generator-helper');
 const Generator = require('yeoman-generator');
-const glob = require('glob');
+const clipboardy = require('clipboardy');
 const genp = require('@jswork/generator-prompts');
 
 require('@jswork/next-date');
@@ -17,6 +17,10 @@ module.exports = class extends Generator {
       author: this.user.git.name(),
       email: this.user.git.email()
     };
+  }
+
+  get iopts() {
+    return this.config.get('component');
   }
 
   constructor(args, options) {
@@ -32,9 +36,7 @@ module.exports = class extends Generator {
   }
 
   prompting() {
-    const { components_dir, component_type, export_type, file_type, prefix } = this.config.get(
-      'component'
-    );
+    const { components_dir, component_type, export_type, file_type, prefix } = this.iopts;
 
     this.option('components_dir', {
       type: String,
@@ -72,29 +74,33 @@ module.exports = class extends Generator {
       const { prefix } = this.config.get('component');
       const component_name = [prefix, props.component_name].filter(Boolean).join('');
       this.props = { ...props, ...this.defaults, component_name };
-      yoHelper.rewriteProps(this.props, {
-        exclude: ['description', 'author', 'email', 'created_at']
-      });
     });
   }
 
   writing() {
+    const ctx = yoHelper.ctx;
     const { component_name } = this.props;
-    const { components_dir, component_type, export_type, file_type } = this.config.get('component');
+    const { clippy, components_dir, component_type, export_type, file_type } = this.iopts;
     const tmplPath = this.templatePath();
     const dest = resolve(components_dir);
     const filename = `${component_type}.${export_type}.${file_type}`;
     const dstFilename = `${component_name}/index.${file_type}`;
+    const tmplData = { ...this.props, ctx };
+    const targetSrcFilename = resolve(tmplPath, file_type, filename);
 
-    this.fs.copyTpl(
-      glob.sync(resolve(tmplPath, file_type, filename)),
-      this.destinationPath(resolve(dest)),
-      this.props
-    );
+    if (clippy) {
+      clipboardy.writeSync(yoHelper.tmpl(targetSrcFilename, tmplData));
+      return console.log('🤡 Snippet code has copied to clipboard!');
+    }
 
+    this.fs.copyTpl(targetSrcFilename, this.destinationPath(resolve(dest)), tmplData);
     this.fs.move(
       resolve(this.destinationPath(dest), filename),
       resolve(this.destinationPath(dest), dstFilename)
     );
+  }
+
+  install() {
+    // console.log('installing...');
   }
 };

@@ -1,7 +1,7 @@
 {
   "@jswork/generator-react-app": {
-    "clippy": false,
     "component": {
+      "clippy": false,
       "prefix": "",
       "components_dir": "src/components",
       "component_type": "functional",
@@ -9,6 +9,7 @@
       "file_type": "tsx"
     },
     "hook": {
+      "clippy": false,
       "prefix": "use-",
       "components_dir": "src/hooks",
       "export_type": "const",
