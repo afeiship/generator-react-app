@@ -1,5 +1,6 @@
 {
   "@jswork/generator-react-app": {
+    "clippy": false,
     "component": {
       "prefix": "",
       "components_dir": "src/components",
