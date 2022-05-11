@@ -67,17 +67,14 @@ module.exports = class extends Generator {
 
     const prompts = genp(['hook_name', 'description']);
     return this.prompt(prompts).then((props) => {
-      const { prefix } = this.config.get('hook');
-
+      const { prefix } = this.iopts;
       const hook_name = [prefix, props.hook_name].filter(Boolean).join('');
       this.props = { ...props, ...this.defaults, hook_name };
-      yoHelper.rewriteProps(this.props, {
-        exclude: ['description', 'author', 'email', 'created_at']
-      });
     });
   }
 
   writing() {
+    const ctx = yoHelper.ctx;
     const { hook_name } = this.props;
     const { components_dir, export_type, file_type } = this.iopts;
     const tmplPath = this.templatePath();
@@ -88,7 +85,7 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       glob.sync(resolve(tmplPath, file_type, filename)),
       this.destinationPath(resolve(dest)),
-      this.props
+      { ...this.props, ctx }
     );
 
     this.fs.move(

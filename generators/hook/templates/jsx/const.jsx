@@ -6,7 +6,7 @@
  */
 import React, { useEffect, useState } from 'react';
 
-export const <%= hookName %> = (inInitial) => {
+export const <%- ctx.camelize(hook_name) %> = (inInitial) => {
   const [ value, setValue ] = useState(inInitial);
 
   useEffect(() => {
