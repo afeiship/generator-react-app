@@ -35,5 +35,6 @@ module.exports = class extends Generator {
 
     // Extend or create package.json file in destination path
     this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);
+    console.log('\nnpm i -D @jswork/craco-plugin-dll-refs');
   }
 };
