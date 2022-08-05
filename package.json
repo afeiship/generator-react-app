@@ -31,6 +31,7 @@
     "@jswork/generator-prompts": "^1.1.6",
     "@jswork/next": "^1.0.9",
     "@jswork/next-date": "^1.0.12",
+    "@jswork/yeoman-generator": "^1.0.4",
     "@jswork/yeoman-generator-helper": "^1.0.9",
     "chalk": "^1.1.3",
     "clipboardy": "^2.3.0",
