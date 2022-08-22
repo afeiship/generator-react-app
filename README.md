@@ -15,6 +15,7 @@ yo @jswork/react-app:component
 yo @jswork/react-app:hook
 yo @jswork/react-app:wpkdc
 yo @jswork/react-app:antd-i18n
+yo @jswork/react-app:mobxer
 ```
 
 ## user your own alias
